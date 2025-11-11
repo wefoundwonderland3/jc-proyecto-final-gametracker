@@ -1,314 +1,151 @@
-/* ===== Component Styles ===== */
-
-/* ===== Game Cards ===== */
+/* ======== GAME CARD ======== */
 .game-card {
-    background: rgba(51,51,51,0.7);
-    border: 1px solid #333333;
-    border-radius: 8px;
-    overflow: hidden;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    flex-shrink: 0;
-    position: relative;
+  background: rgba(51,51,51,0.7);
+  border-radius: 8px;
+  overflow: hidden;
+  flex-shrink: 0;
+  width: 200px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  cursor: pointer;
 }
 
 .game-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
-    z-index: 10;
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+  z-index: 5;
 }
 
-.game-card-image {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-}
-
-.game-card-placeholder {
-    width: 100%;
-    height: 200px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #ffffff;
-    font-size: 0.9rem;
-    text-align: center;
-    padding: 1rem;
+.game-card img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
 }
 
 .game-card-info {
-    padding: 1rem;
+  padding: 1rem;
 }
 
 .game-card-title {
-    font-size: 1rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-    color: #ffffff;
-    line-height: 1.4;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
 }
 
 .game-card-meta {
-    display: flex;
-    gap: 0.5rem;
-    margin-bottom: 0.75rem;
-    flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
 }
 
 .game-card-genre,
-.game-card-platform {
-    background: rgba(255,255,255,0.1);
-    color: #ffffff;
-    padding: 0.25rem 0.5rem;
-    border-radius: 12px;
-    font-size: 0.7rem;
-    font-weight: 500;
-}
-
-.game-card-rating {
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
-    color: #fbbf24;
-    font-size: 0.8rem;
-}
-
+.game-card-platform,
 .game-card-completed {
-    background: #22c55e;
-    color: #ffffff;
-    padding: 0.25rem 0.5rem;
-    border-radius: 12px;
-    font-size: 0.7rem;
-    font-weight: 500;
+  font-size: 0.7rem;
+  padding: 0.3rem 0.6rem;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.1);
 }
 
-.game-card-actions {
-    display: none;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0,0,0,0.8);
-    padding: 1rem;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.game-card:hover .game-card-actions {
-    display: flex;
-}
-
-.game-card-action-btn {
-    background: rgba(255,255,255,0.1);
-    border: none;
-    color: #ffffff;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    font-size: 0.8rem;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    margin: 0.25rem 0;
-}
-
-.game-card-action-btn:hover {
-    background: rgba(255,255,255,0.2);
-}
-
-/* ===== Modal Styles ===== */
+/* ======== MODAL ======== */
 .game-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0,0,0,0.95);
-    backdrop-filter: blur(10px);
-    z-index: 3000;
-    display: none;
-    opacity: 0;
-    transition: opacity 0.3s ease;
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.95);
+  z-index: 4000;
+  backdrop-filter: blur(8px);
 }
 
 .game-modal.show {
-    display: flex;
-    opacity: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: modalFadeIn 0.3s ease-out;
 }
 
 .modal-content {
-    width: 90%;
-    max-width: 60rem;
-    max-height: 90vh;
-    margin: auto;
-    background: #181818;
-    border-radius: 12px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
+  background: #181818;
+  color: #fff;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 800px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
 }
 
 .modal-header {
-    position: relative;
-    height: 20rem;
+  height: 250px;
+  position: relative;
 }
 
 .modal-game-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .modal-close {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    background: rgba(0,0,0,0.7);
-    border: none;
-    color: #ffffff;
-    width: 3rem;
-    height: 3rem;
-    border-radius: 50%;
-    font-size: 1.2rem;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.modal-close:hover {
-    background: rgba(0,0,0,0.9);
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  border: none;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  font-size: 1.2rem;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
 }
 
 .modal-body {
-    padding: 2rem;
-    flex: 1;
-    overflow-y: auto;
-}
-
-.modal-info {
-    margin-bottom: 2rem;
-}
-
-.modal-title {
-    font-size: 2rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
-    color: #ffffff;
-}
-
-.modal-meta {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 1rem;
-    flex-wrap: wrap;
-}
-
-.modal-description {
-    font-size: 1rem;
-    line-height: 1.6;
-    color: #e5e5e5;
-    margin-bottom: 2rem;
+  padding: 2rem;
 }
 
 .modal-actions {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 2rem;
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
 }
 
-.modal-stats {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
+.modal-actions button {
+  border: none;
+  border-radius: 4px;
+  padding: 0.6rem 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
 }
 
-.stat-item {
-    background: rgba(255,255,255,0.05);
-    padding: 1rem;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-}
+.btn-play { background: var(--color-accent); color: #fff; }
+.btn-add-list { background: rgba(255,255,255,0.1); color: #fff; }
 
-.stat-item i {
-    color: #e50914;
-    font-size: 1.2rem;
-}
-
-/* ===== Loading States ===== */
+/* ======== LOADING ======== */
 .loading-spinner {
-    width: 3rem;
-    height: 3rem;
-    border: 3px solid #333333;
-    border-top: 3px solid #e50914;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
+  width: 40px;
+  height: 40px;
+  border: 3px solid #333;
+  border-top-color: var(--color-accent);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 2rem auto;
 }
 
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+  to { transform: rotate(360deg); }
 }
 
-.loading-text {
-    color: #ffffff;
-    font-size: 1rem;
-    margin-top: 1rem;
-}
-
-/* ===== Empty States ===== */
+/* ======== EMPTY STATE ======== */
 .empty-state {
-    text-align: center;
-    padding: 3rem;
-    color: #b3b3b3;
+  text-align: center;
+  color: #b3b3b3;
+  padding: 3rem;
 }
 
 .empty-state i {
-    font-size: 4rem;
-    margin-bottom: 1rem;
-    opacity: 0.5;
-}
-
-.empty-state h3 {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-}
-
-.empty-state p {
-    font-size: 1rem;
-    line-height: 1.6;
-}
-
-/* ===== Responsive Components ===== */
-@media (max-width: 768px) {
-    .modal-content {
-        width: 95%;
-        max-height: 95vh;
-    }
-    
-    .modal-header {
-        height: 15rem;
-    }
-    
-    .modal-title {
-        font-size: 1.5rem;
-    }
-    
-    .modal-actions {
-        flex-direction: column;
-        gap: 0.75rem;
-    }
-    
-    .modal-stats {
-        grid-template-columns: 1fr;
-        gap: 0.75rem;
-    }
-    
-    .game-card-image {
-        height: 150px;
-    }
-    
-    .game-card-title {
-        font-size: 0.9rem;
-    }
+  font-size: 3rem;
+  opacity: 0.5;
+  margin-bottom: 1rem;
 }
